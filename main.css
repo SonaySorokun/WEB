@@ -4,21 +4,49 @@ body {
     font-family: Arial;
     margin: 0px;
 }
+
 main {
     background-color: lightblue;
     color: maroon;
     font-family: Arial;
     margin: 0px;
 }
+
+a {
+    color: maroon;
+}
+
+a:link {
+    color: maroon;
+}
+
+a:visited {
+    color: rgb(156, 98, 226);
+}
+
+a:hover {
+    color: rgb(60, 20, 97);
+    text-decoration: underline;
+    text-shadow: 5px 5px 15px rgba(140, 0, 255, 0.428);
+}
+
+a:active {
+    color: rgb(71, 78, 159);
+    opacity: 0.9;
+}
+
 header {
     background-color: rgb(198, 173, 230);
     color: rgb(92, 90, 217);
     font-family: Arial;
     margin: 0px;
+    padding: 15px;
 }
+
 footer {
     background-color: rgb(198, 173, 230);
     color: rgb(92, 90, 217);
     font-family: Arial;
     margin: 0px;
+    padding: 15px;
 }
