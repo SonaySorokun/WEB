@@ -12,6 +12,18 @@ main {
     margin: 0px;
 }
 
+div.menu {
+    border: 5px solid rgba(128, 0, 0, 0.653);
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+div.menu:hover {
+    background-color: rgb(233, 183, 183);
+    box-shadow: 0 0 15px rgb(65, 4, 4);
+}
+
 a {
     color: maroon;
     transition: 1s 0.8s;
