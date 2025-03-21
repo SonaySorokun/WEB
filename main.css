@@ -9,7 +9,7 @@ main {
     background-color: lightblue;
     color: maroon;
     font-family: Arial;
-    margin: 0px;
+    margin: 10px 20px 48,5px;
 }
 
 div.menu {
@@ -63,4 +63,8 @@ footer {
     font-family: Arial;
     margin: 0px;
     padding: 15px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
