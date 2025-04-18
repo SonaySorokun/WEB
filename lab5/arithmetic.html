@@ -80,6 +80,40 @@
                 alert("Отношение " + a + " и " + b + " равно " + result);
             }
 
+            function ShowDeg() {
+                let inputA = document.getElementById('numberA').value
+                let inputB = document.getElementById('numberB').value
+
+                let a = parseInt(numberA.value);
+                let b = parseInt(numberB.value);
+
+                if(a+b == 0) {
+                    alert("Введите не 0 хотя бы в одно поле");
+                    return;
+                }
+
+                if(isNaN(a)) {
+                    alert("Введите числовое значение в первое поле");
+                    inputA.focus();
+                    inputA.select();
+                    inputA.style.color = "blue";
+                    inputA.style.borderColor = "purple";
+                    return;
+                }
+
+                if(isNaN(b)) {
+                    alert("Введите числовое значение во второе поле");
+                    inputB.focus();
+                    inputB.select();
+                    inputB.style.color = "blue";
+                    inputB.style.borderColor = "purple";
+                    return;
+                }
+
+                let result = a ** b;
+                alert(" " + a + " в степени " + b + " равна " + result);
+            }
+
             function showAuthor() {
                 alert("Автор страницы:\nCорокун Соня Романовна");
             }
@@ -121,6 +155,7 @@
             <div class="massage" onclick="ShowDiff()">Найти разность чисел</div>
             <div class="massage" onclick="ShowProduct()">Найти произведение чисел</div>
             <div class="massage" onclick="ShowDiv()">Найти отношение чисел</div>
+            <div class="massage" onclick="ShowDeg()">Найти чисело в степени</div>
             <div class="massage" onclick="showAuthor()">Узнать, кто автор страницы</div>
         </main>
         <footer ondblclick="ShowHi()">
