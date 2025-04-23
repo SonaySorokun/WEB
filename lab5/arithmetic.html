@@ -121,6 +121,13 @@
             function ShowHi() {
                 alert("Приветствую на моей страничке <3");
             }
+
+            function changeOutput(buttonNum, backColor, textColor) {
+                let output = document.getElementById("output");
+                output.innerHTML = "Была жмякнута кнопка " + buttonNum;
+                output.style.backgroundColor = backColor;
+                output.style.color = textColor;
+            }
         </script>
         <style>
             .massage {
@@ -141,6 +148,20 @@
             footer {
                 cursor: pointer;
             }
+            
+            #output {
+                border: 5px dotted rgb(6, 6, 73);
+                border-radius: 25px;
+                width: 300px;
+                height: 40px;
+                background-color: rgb(127, 166, 187);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .botton {
+                margin-top: 10px;
+            }
         </style>
     </head>
     <body>
@@ -157,6 +178,15 @@
             <div class="massage" onclick="ShowDiv()">Найти отношение чисел</div>
             <div class="massage" onclick="ShowDeg()">Найти чисело в степени</div>
             <div class="massage" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+            <div class="botton">
+                <input type="button" value="Кнопка 1" onclick="changeOutput(1, '#a97fbb', 'purple')">
+                <input type="button" value="Кнопка 2" onclick="changeOutput(2, '#8084bc', 'blue')">
+                <input type="button" value="Кнопка 3" onclick="changeOutput(3, '#bc8086', 'red')">
+                <input type="button" value="Кнопка 4" onclick="changeOutput(4, '#81bc80', 'green')">
+            </div>
+
+            <div id="output"></div>
         </main>
         <footer ondblclick="ShowHi()">
             &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
