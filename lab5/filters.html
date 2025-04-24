@@ -16,6 +16,7 @@
                 let hueRotate = document.getElementById('hueRotateValue').value + 'deg';
                 let invert = document.getElementById('invertValue').value + '%';
                 let saturate = document.getElementById('saturateValue').value + '%';
+                let sepia = document.getElementById('sepiaValue').value + '%';
 
                 document.getElementById('blurOutput').innerText = blur;
                 document.getElementById('brightnessOutput').innerText = brightness;
@@ -24,6 +25,7 @@
                 document.getElementById('hueRotateOutput').innerText = hueRotate;
                 document.getElementById('invertOutput').innerText = invert;
                 document.getElementById('saturateOutput').innerText = saturate;
+                document.getElementById('sepiaOutput').innerText = sepia;
 
                 document.getElementById('blurimage').style.filter =
                     'blur(' + blur + ') ' +
@@ -32,7 +34,8 @@
                     'grayscale(' + grayscale + ') ' +
                     'hue-rotate(' + hueRotate + ') ' +
                     'invert(' + invert + ') ' +
-                    'saturate(' + saturate + ')';
+                    'saturate(' + saturate + ')' +
+                    'sepia(' + sepia + ')';
             }
             function reset() {
                 document.getElementById('blurValue').value = 0;
@@ -42,6 +45,7 @@
                 document.getElementById('hueRotateValue').value = 0;
                 document.getElementById('invertValue').value = 0;
                 document.getElementById('saturateValue').value = 100;
+                document.getElementById('sepiaValue').value = 0;
                 changeFilters();
             }
         </script>
@@ -85,6 +89,10 @@
                 Фильтр saturate:
                 <input type="range" min="0" max="500" value="100" onchange="changeFilters()" id="saturateValue">
                 <span id="saturateOutput"></span>
+            </div>
+                Фильтр sepia:
+                <input type="range" min="0" max="100" value="0" onchange="changeFilters()" id="sepiaValue">
+                <span id="sepiaOutput"></span>
             </div>
             <button onclick="reset()">Вернуть</button>
             <div><img src="MikuBEAM.jpeg" id="blurimage"></div>
