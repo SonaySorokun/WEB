@@ -11,17 +11,21 @@
             function changeFilters() {
                 let blur = document.getElementById('blurValue').value + 'px';
                 let brightness = document.getElementById('brightnessValue').value + '%';
+                let contrast = document.getElementById('contrastValue').value + '%';
 
                 document.getElementById('blurOutput').innerText = blur;
                 document.getElementById('brightnessOutput').innerText = brightness;
+                document.getElementById('contrastOutput').innerText = contrast;
 
                 document.getElementById('blurimage').style.filter =
                     'blur(' + blur + ') ' +
-                    'brightness(' + brightness + ')';
+                    'brightness(' + brightness + ')' +
+                    'contrast(' + contrast + ') ';
             }
             function reset() {
                 document.getElementById('blurValue').value = 0;
                 document.getElementById('brightnessValue').value = 100;
+                document.getElementById('contrastValue').value = 100;
                 changeFilters();
             }
         </script>
@@ -40,6 +44,11 @@
                 Фильтр brightness:
                 <input type="range" min="0" max="500" value="100" onchange="changeFilters()" id="brightnessValue">
                 <span id="brightnessOutput"></span>
+            </div>
+            <div>
+                Фильтр contrast:
+                <input type="range" min="0" max="500" value="100" onchange="changeFilters()" id="contrastValue">
+                <span id="contrastOutput"></span>
             </div>
             <button onclick="reset()">Вернуть</button>
             <div><img src="MikuBEAM.jpeg" id="blurimage"></div>
