@@ -12,20 +12,24 @@
                 let blur = document.getElementById('blurValue').value + 'px';
                 let brightness = document.getElementById('brightnessValue').value + '%';
                 let contrast = document.getElementById('contrastValue').value + '%';
+                let grayscale = document.getElementById('grayscaleValue').value + '%';
 
                 document.getElementById('blurOutput').innerText = blur;
                 document.getElementById('brightnessOutput').innerText = brightness;
                 document.getElementById('contrastOutput').innerText = contrast;
+                document.getElementById('grayscaleOutput').innerText = grayscale;
 
                 document.getElementById('blurimage').style.filter =
                     'blur(' + blur + ') ' +
                     'brightness(' + brightness + ')' +
-                    'contrast(' + contrast + ') ';
+                    'contrast(' + contrast + ') ' +
+                    'grayscale(' + grayscale + ') ';
             }
             function reset() {
                 document.getElementById('blurValue').value = 0;
                 document.getElementById('brightnessValue').value = 100;
                 document.getElementById('contrastValue').value = 100;
+                document.getElementById('grayscaleValue').value = 0;
                 changeFilters();
             }
         </script>
@@ -49,6 +53,11 @@
                 Фильтр contrast:
                 <input type="range" min="0" max="500" value="100" onchange="changeFilters()" id="contrastValue">
                 <span id="contrastOutput"></span>
+            </div>
+            <div>
+                Фильтр grayscale:
+                <input type="range" min="0" max="100" value="0" onchange="changeFilters()" id="grayscaleValue">
+                <span id="grayscaleOutput"></span>
             </div>
             <button onclick="reset()">Вернуть</button>
             <div><img src="MikuBEAM.jpeg" id="blurimage"></div>
