@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сорокун Соня Романовна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon_io/favicon-16x16.png">
+    <link rel="icon" href="../favicon_io/favicon-32x32.png">
+    <script>
+        function hideCircle(el) {
+            el.style.transform = 'scale(0)';
+            el.style.opacity = '0';
+        }
+
+        function showAll() {
+            const circles = document.querySelectorAll('.circle');
+            for (let i = 0; i < circles.length; i++) {
+                circles[i].style.transform = 'scale(1)';
+                circles[i].style.opacity = '1';
+            }
+        }
+
+        window.onload = function() {
+            const main = document.querySelector('main');
+            const colors = [
+                'lightblue', 'lightgray', 'wheat', 'plum', 'lightcyan',
+                'lavender', 'paleturquoise', 'palegreen', 'thistle', 'lightsalmon'
+            ];
+
+            for (let i = 0; i < 10; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.textContent = i + 1;
+                circle.style.backgroundColor = colors[i];
+
+                const maxX = main.clientWidth - 80;
+                const maxY = main.clientHeight - 80;
+                const left = Math.random() * maxX;
+                const top = Math.random() * maxY;
+                circle.style.left = left + 'px';
+                circle.style.top = top + 'px';
+
+                circle.onclick = function() {
+                    hideCircle(circle);
+                };
+                main.appendChild(circle);
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            position: relative;
+            height: 600px;
+        }
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            position: absolute;
+            transition: 0.5s;
+            cursor: pointer;
+            border: 2px solid rgb(114, 83, 175);
+            color: rgb(114, 83, 175);
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgb(146, 126, 173);
+            color: rgb(238, 226, 238);
+            border: 2px solid #0001;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+        header, footer {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная 5</header>
+    <main>
+        <button onclick="showAll()">Вернуть</button>
+    </main>
+    <footer>&copy; Сорокун Соня, ФБИ-32, 2 курс, 2025</footer>
+</body>
+</html>
