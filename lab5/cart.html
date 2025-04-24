@@ -55,7 +55,6 @@
             function calculateTotal() {
                 const inputp = document.querySelectorAll('input[type="number"]');
                 let total = 0;
-                // Перебираем каждое поле
                 for (let i = 0; i < inputp.length; i++) {
                     let input = inputp[i];
                     if (input.value.trim() === '') continue;
@@ -63,7 +62,6 @@
                     let quantity = parseInt(input.value);
                     let price = parseFloat(input.getAttribute('data-price'));
 
-                    // Если введено отрицательное или некорректное значение — ставим 0
                     if (isNaN(quantity) || quantity < 0) {
                         alert("Введите во все поля положительные значения");
                         quantity = 0;
@@ -72,7 +70,6 @@
                         input.select();
                         return;
                     }
-                    // Прибавляем к общей сумме
                     total += quantity * price;
                 }
                 const totalDiv = document.getElementById('total');
@@ -80,12 +77,10 @@
             }
           
             function clearCart() {
-                // Получаем все поля и очищаем их
                 const inputs = document.querySelectorAll('input[type="number"]');
                 for (let i = 0; i < inputs.length; i++) {
                     inputs[i].value = '';
                 }
-                // Очищаем итог
                 const totalDiv = document.getElementById('total');
                 totalDiv.textContent = '';
             }
