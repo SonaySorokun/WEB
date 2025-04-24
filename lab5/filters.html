@@ -14,19 +14,22 @@
                 let contrast = document.getElementById('contrastValue').value + '%';
                 let grayscale = document.getElementById('grayscaleValue').value + '%';
                 let hueRotate = document.getElementById('hueRotateValue').value + 'deg';
+                let invert = document.getElementById('invertValue').value + '%';
 
                 document.getElementById('blurOutput').innerText = blur;
                 document.getElementById('brightnessOutput').innerText = brightness;
                 document.getElementById('contrastOutput').innerText = contrast;
                 document.getElementById('grayscaleOutput').innerText = grayscale;
                 document.getElementById('hueRotateOutput').innerText = hueRotate;
+                document.getElementById('invertOutput').innerText = invert;
 
                 document.getElementById('blurimage').style.filter =
                     'blur(' + blur + ') ' +
                     'brightness(' + brightness + ')' +
                     'contrast(' + contrast + ') ' +
                     'grayscale(' + grayscale + ') ' +
-                    'hue-rotate(' + hueRotate + ') ';
+                    'hue-rotate(' + hueRotate + ') ' +
+                    'invert(' + invert + ') ';
             }
             function reset() {
                 document.getElementById('blurValue').value = 0;
@@ -34,6 +37,7 @@
                 document.getElementById('contrastValue').value = 100;
                 document.getElementById('grayscaleValue').value = 0;
                 document.getElementById('hueRotateValue').value = 0;
+                document.getElementById('invertValue').value = 0;
                 changeFilters();
             }
         </script>
@@ -67,6 +71,11 @@
                 Фильтр hue-rotate:
                 <input type="range" min="0" max="360" value="0" onchange="changeFilters()" id="hueRotateValue">
                 <span id="hueRotateOutput"></span>
+            </div>
+            <div>
+                Фильтр invert:
+                <input type="range" min="0" max="100" value="0" onchange="changeFilters()" id="invertValue">
+                <span id="invertOutput"></span>
             </div>
             <button onclick="reset()">Вернуть</button>
             <div><img src="MikuBEAM.jpeg" id="blurimage"></div>
