@@ -13,23 +13,27 @@
                 let brightness = document.getElementById('brightnessValue').value + '%';
                 let contrast = document.getElementById('contrastValue').value + '%';
                 let grayscale = document.getElementById('grayscaleValue').value + '%';
+                let hueRotate = document.getElementById('hueRotateValue').value + 'deg';
 
                 document.getElementById('blurOutput').innerText = blur;
                 document.getElementById('brightnessOutput').innerText = brightness;
                 document.getElementById('contrastOutput').innerText = contrast;
                 document.getElementById('grayscaleOutput').innerText = grayscale;
+                document.getElementById('hueRotateOutput').innerText = hueRotate;
 
                 document.getElementById('blurimage').style.filter =
                     'blur(' + blur + ') ' +
                     'brightness(' + brightness + ')' +
                     'contrast(' + contrast + ') ' +
-                    'grayscale(' + grayscale + ') ';
+                    'grayscale(' + grayscale + ') ' +
+                    'hue-rotate(' + hueRotate + ') ';
             }
             function reset() {
                 document.getElementById('blurValue').value = 0;
                 document.getElementById('brightnessValue').value = 100;
                 document.getElementById('contrastValue').value = 100;
                 document.getElementById('grayscaleValue').value = 0;
+                document.getElementById('hueRotateValue').value = 0;
                 changeFilters();
             }
         </script>
@@ -58,6 +62,11 @@
                 Фильтр grayscale:
                 <input type="range" min="0" max="100" value="0" onchange="changeFilters()" id="grayscaleValue">
                 <span id="grayscaleOutput"></span>
+            </div>
+            <div>
+                Фильтр hue-rotate:
+                <input type="range" min="0" max="360" value="0" onchange="changeFilters()" id="hueRotateValue">
+                <span id="hueRotateOutput"></span>
             </div>
             <button onclick="reset()">Вернуть</button>
             <div><img src="MikuBEAM.jpeg" id="blurimage"></div>
