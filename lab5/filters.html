@@ -15,6 +15,7 @@
                 let grayscale = document.getElementById('grayscaleValue').value + '%';
                 let hueRotate = document.getElementById('hueRotateValue').value + 'deg';
                 let invert = document.getElementById('invertValue').value + '%';
+                let saturate = document.getElementById('saturateValue').value + '%';
 
                 document.getElementById('blurOutput').innerText = blur;
                 document.getElementById('brightnessOutput').innerText = brightness;
@@ -22,6 +23,7 @@
                 document.getElementById('grayscaleOutput').innerText = grayscale;
                 document.getElementById('hueRotateOutput').innerText = hueRotate;
                 document.getElementById('invertOutput').innerText = invert;
+                document.getElementById('saturateOutput').innerText = saturate;
 
                 document.getElementById('blurimage').style.filter =
                     'blur(' + blur + ') ' +
@@ -29,7 +31,8 @@
                     'contrast(' + contrast + ') ' +
                     'grayscale(' + grayscale + ') ' +
                     'hue-rotate(' + hueRotate + ') ' +
-                    'invert(' + invert + ') ';
+                    'invert(' + invert + ') ' +
+                    'saturate(' + saturate + ')';
             }
             function reset() {
                 document.getElementById('blurValue').value = 0;
@@ -38,6 +41,7 @@
                 document.getElementById('grayscaleValue').value = 0;
                 document.getElementById('hueRotateValue').value = 0;
                 document.getElementById('invertValue').value = 0;
+                document.getElementById('saturateValue').value = 100;
                 changeFilters();
             }
         </script>
@@ -76,6 +80,11 @@
                 Фильтр invert:
                 <input type="range" min="0" max="100" value="0" onchange="changeFilters()" id="invertValue">
                 <span id="invertOutput"></span>
+            </div>
+            <div>
+                Фильтр saturate:
+                <input type="range" min="0" max="500" value="100" onchange="changeFilters()" id="saturateValue">
+                <span id="saturateOutput"></span>
             </div>
             <button onclick="reset()">Вернуть</button>
             <div><img src="MikuBEAM.jpeg" id="blurimage"></div>
