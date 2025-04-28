@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon_io/favicon-16x16.png">
+        <link rel="icon" href="../favicon_io/favicon-32x32.png">
+        <style>
+            main {
+                text-align: center;
+                margin-top: 30px;
+            }
+            #blurimage {
+                width: 400px;
+                height: auto;
+                cursor: crosshair;
+            }
+            #info {
+                margin-top: 20px;
+                font-weight: bold;
+            }
+            #help {
+                margin-top: 30px;
+                font-size: 16px;
+                color: #555;
+            }
+        </style>
+        <script>
+            function applyFilter(event) {
+                let img = document.getElementById('blurimage');
+                let info = document.getElementById('info');
+                let rect = img.getBoundingClientRect();
+                let mouseX = event.clientX - rect.left;
+                let width = rect.width;
+                let percent = mouseX / width;
+
+                if (percent < 0) {
+                    percent = 0;
+                }
+                if (percent > 1) {
+                    percent = 1;
+                }
+
+                let filterName = 'blur';
+                let maxValue = 20;
+                let unit = 'px';
+                let filterValue = percent * maxValue;
+
+                if (event.ctrlKey) {
+                    filterName = 'grayscale';
+                    maxValue = 100;
+                    unit = '%';
+                    filterValue = percent * maxValue;
+                }
+
+                if (event.altKey) {
+                    filterName = 'hue-rotate';
+                    maxValue = 360;
+                    unit = 'deg';
+                    filterValue = percent * maxValue;
+                }
+
+                if (event.shiftKey) {
+                    filterName = 'brightness';
+                    maxValue = 500;
+                    unit = '%';
+                    filterValue = percent * maxValue;
+                }
+
+                img.style.filter = filterName + '(' + filterValue + unit + ')';
+                info.innerText = 'Фильтр: ' + filterName + ', значение: ' + Math.round(filterValue) + unit;
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 5
+        </header>
+        <main>
+            <div>
+                <img src="Miku.jpeg" id="blurimage" onmousemove="applyFilter(event)">
+                <div id="info">Фильтр: blur, значение: 0px</div>
+                <div id="help">
+                    Наведите мышь на картинку: чем правее — тем сильнее эффект.<br>
+                    Нажмите <b>Ctrl</b> для grayscale, <b>Alt</b> для hue-rotate, <b>Shift</b> для brightness.
+                </div>
+            </div>
+        </main>
+        <footer>
+            &copy; Сорокун Соня, ФБИ-32, 2 курс, 2025
+        </footer>
+    </body>
+</html>
