@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 5 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <style>
+            #block {
+                height: 100px;
+                width: 100px;
+                border: 2px solid rgba(0, 0, 0, 0.133);
+                cursor: crosshair;
+                background-color: white;
+            }
+        </style>
+        <script>
+            function showCoords() {
+                let x = this.event.x;
+                let y = this.event.y;
+                let div = document.getElementById('block');
+                div.innerHTML = '<b>x</b> = ' + x + 'px<br><b>y</b> = ' + y + 'px';
+
+                if (event.ctrlKey) {
+                    div.style.color = 'blue';
+                    div.style.backgroundColor = 'grey';
+                    div.innerHTML += '<br><i>Нажата клавиша Ctrl</i>';
+                } else if (event.altKey) {
+                    div.style.color = 'white';
+                    div.style.backgroundColor = 'grey';
+                    div.innerHTML += '<br><i>Нажата клавиша Alt</i>';
+                } else if (event.shiftKey) {
+                    div.style.color = 'purple';
+                    div.style.backgroundColor = 'grey';
+                    div.innerHTML += '<br><i>Нажата клавиша Shift</i>';
+                } else {
+                    div.style.color = 'black';
+                    div.style.backgroundColor = 'white';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 5
+        </header>
+        <main>
+            <div id="block" onmousemove="showCoords()"></div>
+        </main>
+        <footer>
+            &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
