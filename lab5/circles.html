@@ -8,11 +8,13 @@
         <link rel="icon" href="../favicon_io/favicon-16x16.png">
         <link rel="icon" href="../favicon_io/favicon-32x32.png">
         <script>
+            //уменьшение кружочка
             function hideCircle(el) {
                 el.style.transform = 'scale(0)';
                 el.style.opacity = '0';
             }
 
+            //возвращение кружочков
             function showAll() {
                 const circles = document.querySelectorAll('.circle');
                 for (let i = 0; i < circles.length; i++) {
@@ -21,6 +23,7 @@
                 }
             }
 
+            //автозапуск создания кружочков
             window.onload = function() {
                 const main = document.querySelector('main');
                 const colors = [
@@ -28,6 +31,7 @@
                     'lavender', 'paleturquoise', 'palegreen', 'thistle', 'lightsalmon'
                 ];
 
+                //создание 10 кружочков
                 for (let i = 0; i < 10; i++) {
                     const circle = document.createElement('div');
                     circle.className = 'circle';
@@ -41,9 +45,11 @@
                     circle.style.left = left + 'px';
                     circle.style.top = top + 'px';
 
+                    //клик для пропажи
                     circle.onclick = function() {
                         hideCircle(circle);
                     };
+                    //добавление в main
                     main.appendChild(circle);
                 }
             }
