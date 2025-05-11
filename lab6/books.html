@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 6 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <script src="books.js"></script>
+        <script>
+            function showBooks() {
+                const bookList = document.getElementById('bookList');
+                for(let i = 0; i < books.length; i++) {
+                    let extraClass = books[i].bestseller ? 'bestseller' : 'notbest';
+                    if (!books[i].available) {
+                        extraClass += ' outofstock';
+                    }
+                    bookList.innerHTML += `
+                        <div class='book ${extraClass}'>
+                            <b>${ books[i].author }.</b>
+                            <i>${ books[i].name }</i>
+                            &mdash; ${ books[i].publicationYear }
+                            <br><span class='price'>${books[i].price}</span>
+                        </div>
+                    `;
+                }
+            }
+        </script>
+        <style>
+            h1 {
+                color: #4CAF50;
+                text-align: center;
+                font-size: 32px;
+                margin-top: 30px;
+            }
+            #bookList {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin: 20px auto;
+                width: 80%;
+                max-width: 800px;
+            }
+            .book {
+                padding: 20px;
+                border-radius: 10px;
+                background-color: #fff;
+            }
+            .bestseller {
+                background-color: #d2f5c4;
+                border-left: 6px solid #4CAF50;
+            }
+            .notbest {
+                background-color: #f0f0f0;
+                border-left: 6px solid #bbb;
+            }
+            .outofstock {
+                opacity: 0.6;
+                font-style: italic;
+            }
+            .outofstock::after {
+                content: " (Нет в наличии)";
+                color: red;
+                font-weight: bold;
+            }
+            .price {
+                font-weight: bold;
+                color: #2c3e50;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body onload="showBooks()">
+        <header>
+            НГТУ, ФБ, Лабораторная 6
+        </header>
+        <main>
+            <h1>Список книг</h1>
+            <div id="bookList"></div>
+        </main>
+        <footer>
+            &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
