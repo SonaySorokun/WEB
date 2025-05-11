@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 6 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <style>
+            #diag {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: flex-end;
+                height: 690px;
+                margin: 0 auto;
+                gap: 15px;
+            }
+            .bar {
+                width: 50px;
+                text-align: center;
+                padding-top: 10px;
+                color: white;
+                background-color: #6a4c9c;
+                border-radius: 5px 5px;
+            }
+        </style>
+        <script>
+            function showDiagram() {
+                let data = [50, 33, 113, 100, 104, 43, 28, 50, 36, 23];
+                let colors = ['#9b59b6', '#8e44ad', '#3498db', '#5b2c6f', '#7d3c98', '#8e44ad', '#6c3483', '#a569bd', '#6f42c1', '#9b59b6'];                let bars = document.getElementsByClassName('bar');
+                const diagHeight = document.getElementById('diag').clientHeight;
+                const maxData = Math.max(...data);
+                const k = diagHeight / maxData * 0.9;
+                for(let i = 0; i < data.length; i++) {
+                    bars[i].style.height = k * data[i] + 'px';
+                    bars[i].style.backgroundColor = colors[i % colors.length];
+                    bars[i].innerHTML = `<span>${data[i]}</span>`;
+                }
+            }
+        </script>
+    </head>
+    <body onload="showDiagram()">
+        <header>
+            НГТУ, ФБ, Лабораторная 6
+        </header>
+        <main>
+            <div id="diag">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>          
+        </main>
+        <footer>
+            &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
