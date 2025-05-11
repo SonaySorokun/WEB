@@ -1,34 +1,74 @@
 <!DOCTYPE html>
-<html>mt
+<html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../main.css">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="icon" href="../favicon-32x32.png">
-        <link rel="icon" href="../favicon.ico">
         <title>Сорокун Соня Романовна. Лабораторная 6я</title>
-        <script>
-            function showMutipleTable() {
-                let tbl = document.getElementById('mtable');
-                tbl.innerHTML = '<h1>Таблица умножения</h1>';
-                for(i = 1; i <= 10; i++) {
-                    let s = `<div>${i} * 7 = ${i*7}</div>`;
-                    tbl.innerHTML += s;
-                }
-            }
-            showMutipleTable()
-        </script>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
         <style>
-            main {
-                color: black;
+            h1 {
+                color: maroon;
+                font-size: 30px;
+                margin-top: 20px;
+            }
+            .form-group {
+                margin: 10px;
+            }
+            label {
+                font-size: 20px;
+                color: maroon;
+            }
+            input[type="number"] {
+                font-size: 18px;
+                padding: 5px;
+                margin-left: 10px;
+                width: 60px;
+            }
+            #t {
+                background-color: maroon;
+                color: white;
+                font-size: 18px;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                margin-top: 20px;
             }
         </style>
+         <script>
+            function showMutipleTable(){
+                let tb1 = document.getElementById('mtable');
+                let inputA = document.getElementById('a');
+                let inputB = document.getElementById('b');
+                let inputC = document.getElementById('c');
+                let a = parseInt(inputA.value) ||0;
+                let b = parseInt(inputB.value) ||0;
+                let c = parseInt(inputC.value) ||0;
+                tb1.innerHTML = '<h1> Таблица умножения </h1>';
+                for( let i = b; i <=c; i++) {
+                    let s = `<div>${i} * ${a} =  ${i*a}</div>`;
+                    tb1.innerHTML += s;
+                }
+                if(b>c){
+                    alert('Ошибка');
+                    return;
+                }
+            }
+            function table() {
+                showMutipleTable()
+            }
+        </script>
     </head>
     <body onload="showMutipleTable()">
         <header>НГТУ, Лабораторная работа 6</header>
         <main>
             <div id="mtable"></div>
+            <hr>
+            <label >Умножить на:<input type="number" value="7" id="a"><br></label>
+            <label>Начать с: <input type="number"  value="1" id="b"><br></label>
+            <label>Закончить на: <input type="number"  value="10" id="c"><br></label>
+            <input id="t" type="button" value="Таблица" style="margin: 5px;"onclick="table()" >
         </main>
         <footer>
             &copy; Сорокун Cоня, ФБИ-32, 2 курс 2925
