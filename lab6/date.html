@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 6 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <style>
+            div {
+                color: maroon;
+                text-align: center;
+                font-size: 25px;
+                font-style: italic;
+            }
+        </style>
+        <script>
+            function showDate() {
+                let out = document.getElementById('current-date');
+                let today = new Date();
+                let rus = today.toLocaleString('ru-RU')
+                let ch = today.toLocaleString('zh-CN')
+                let kr = today.toLocaleString('ko-KR')
+                let jp = today.toLocaleString('ja')
+                let kz = today.toLocaleString('kk-KZ')
+                out.innerHTML = `
+                    Дата и время для русской локали: ${ rus }<br>
+                    Дата и время для китайской локали: ${ ch }<br>
+                    Дата и время для корейской локали: ${ kr }<br>
+                    Дата и время для японской локали: ${ jp }<br>
+                    Дата и время для казахской локали: ${ kz }<br>
+                `;
+            }
+        </script>
+    </head>
+    <body onload="showDate()">
+        <header>
+            НГТУ, ФБ, Лабораторная 6
+        </header>
+        <main>
+            <div id="current-date"></div>
+        </main>
+        <footer>
+            &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
