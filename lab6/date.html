@@ -14,16 +14,29 @@
                 font-size: 25px;
                 font-style: italic;
             }
+            header {
+                transition: color 0.2s;
+            }
+            #start-btn, #stop-btn, #start-time-btn, #stop-time-btn {
+                margin-top: 15px;
+                background-color: rgb(184, 113, 206);
+                color: white;
+                border-radius: 15px;
+                width: 250px;
+                height: 50px;
+                font-size: 18px;
+                cursor: pointer;
+            }
         </style>
         <script>
             function showDate() {
                 let out = document.getElementById('current-date');
                 let today = new Date();
-                let rus = today.toLocaleString('ru-RU')
-                let ch = today.toLocaleString('zh-CN')
-                let kr = today.toLocaleString('ko-KR')
-                let jp = today.toLocaleString('ja')
-                let kz = today.toLocaleString('kk-KZ')
+                let rus = today.toLocaleString('ru-RU');
+                let ch = today.toLocaleString('zh-CN');
+                let kr = today.toLocaleString('ko-KR');
+                let jp = today.toLocaleString('ja');
+                let kz = today.toLocaleString('kk-KZ');
                 out.innerHTML = `
                     Дата и время для русской локали: ${ rus }<br>
                     Дата и время для китайской локали: ${ ch }<br>
@@ -31,6 +44,39 @@
                     Дата и время для японской локали: ${ jp }<br>
                     Дата и время для казахской локали: ${ kz }<br>
                 `;
+            }
+            function changeColors(){
+                const header = document.getElementsByTagName('header')[0];
+                const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                header.style.color = rgb;
+            }
+
+            let timerNum;
+            function startChangeColors() {
+                changeColors();
+                timerNum = setInterval(changeColors, 1000);
+                document.getElementById('start-btn').disabled = true;
+                document.getElementById('stop-btn').disabled = false;
+            }
+            function stopChangeColors() {
+                clearInterval(timerNum);
+                timerNum = null;
+                document.getElementById('start-btn').disabled = false;
+                document.getElementById('stop-btn').disabled = true;
+            }
+            let dateTimer
+            function startChangeDate() {
+                showDate();
+                dateTimer = setInterval(showDate, 1000);
+                document.getElementById('start-time-btn').disabled = true;
+                document.getElementById('stop-time-btn').disabled = false;
+            }
+
+            function stopChangeDate() {
+                clearInterval(dateTimer);
+                dateTimer = null;
+                document.getElementById('start-time-btn').disabled = false;
+                document.getElementById('stop-time-btn').disabled = true;
             }
         </script>
     </head>
@@ -40,6 +86,14 @@
         </header>
         <main>
             <div id="current-date"></div>
+            <div>
+                <button onclick="startChangeColors()" id="start-btn">Старт</button>
+                <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
+            </div>
+            <div>
+                <button onclick="startChangeDate()" id="start-time-btn">Обновить время</button>
+                <button onclick="stopChangeDate()" disabled id="stop-time-btn">Остановить время</button>
+            </div>
         </main>
         <footer>
             &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
