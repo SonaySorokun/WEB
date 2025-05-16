@@ -46,7 +46,7 @@
                 `;
             }
             function changeColors(){
-                const header = document.getElementsByTagName('header')[0];
+                const header = document.querySelector('header');
                 const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
                 header.style.color = rgb;
             }
