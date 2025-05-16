@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 7 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <script>
+            function getPurpleShade() {
+                const r = Math.floor(100 + Math.random() * 155);
+                const g = Math.floor(Math.random() * 60);
+                const b = Math.floor(100 + Math.random() * 155);
+                return `rgb(${r},${g},${b})`;
+            }
+            function addNewBlock() {
+                let newBlock = document.createElement('div');
+                newBlock.style.backgroundColor = getPurpleShade();
+                newBlock.style.height = '40px';
+                newBlock.style.borderRadius = '10px';
+                newBlock.style.margin = '3px';
+    
+                document.querySelector('main').appendChild(newBlock);
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 7
+        </header>
+        <main>
+            <button onclick="addNewBlock()">Добавить блок</button>
+        </main>
+        <footer>
+            &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
