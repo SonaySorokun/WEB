@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 7 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <script>
+            function getTodayTemperatures() {
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+                const output = document.getElementById('weather');
+                
+                fetch(url)
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        const times = data.hourly.time;
+                        const temps = data.hourly.temperature_2m;
+        
+                        const today = new Date();
+                        const year = today.getFullYear();
+                        const month = String(today.getMonth() + 1).padStart(2, '0');
+                        const day = String(today.getDate()).padStart(2, '0');
+                        const todayStr = year + '-' + month + '-' + day;
+        
+                        output.innerHTML = "<b>Температура в Новосибирске на " + day + "." + month + "." + year + ":</b><br>";
+        
+                        const targetHours = ["08:00", "12:00", "20:00"];
+                        targetHours.forEach(function(hour) {
+                            const fullTime = todayStr + "T" + hour;
+                            const index = times.indexOf(fullTime);
+                            if (index !== -1) {
+                                output.innerHTML += hour + ": " + temps[index] + "°C<br>";
+                            } else {
+                                output.innerHTML += hour + ": данные недоступны<br>";
+                            }
+                        });
+                    })
+            }
+        </script>                     
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная 7
+        </header>
+        <main>
+            <button onclick="getTodayTemperatures()">Показать температуру сегодня</button>
+            <div id="weather"></div>
+        </main>
+        <footer>
+            &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
+        </footer>
+    </body>
+</html>
