@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сорокун Соня Романовна. Лабораторная 7 </title>
+        <link rel="stylesheet" href="../main.css" >
+        <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
+        <link rel="icon" href="../favicon_io/favicon-16x16.png" >
+        <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <style>
+            h1 {
+                margin: 10px;
+                font-weight: bold;
+                text-align: center;
+            }            
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            function getWeatherData() {
+            
+            const url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m,relative_humidity_2m&current=temperature_2m,relative_humidity_2m&timezone=auto&past_days=1&forecast_days=1";
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    
+                    const Temperature = data.temperature_2m;
+                    const Humidity = data.relative_humidity_2m;
+
+                    
+                    document.querySelector('#temperature').textContent = Temperature;
+                    document.querySelector('#humidity').textContent = Humidity;
+
+                    
+                    const hourlyData = data.hourly;
+                    const timeLabels = hourlyData.time.map(function(time) { return new Date(time).toLocaleString() });
+                    
+                    const temperatureData = hourlyData.temperature_2m;
+                    const humidityData = hourlyData.relative_humidity_2m;
+
+                    
+                    const ctx = document.getElementById('weatherChart').getContext('2d');
+                    const weatherChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: timeLabels,
+                            datasets: [{
+                                label: 'Температура (°C)',
+                                data: temperatureData,
+                                backgroundColor: 'rgba(217, 155, 155)',
+                            },
+                            {
+                                label: 'Влажность (%)',
+                                data: humidityData,
+                                backgroundColor: 'rgba(155, 171, 217)',
+                            }]
+                        },
+                    });
+                })  
+            }
+        </script>
+    </head>
+    <body onload="getWeatherData()">
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+        </header>
+        <main>
+            <h1>Прогноз погоды в Новосибирске</h1>
+            <div>
+                <p>Текущая температура: <span id="temperature"></span>°C</p>
+                <p>Текущая влажность: <span id="humidity"></span>%</p>
+            </div>
+            <div>
+                <canvas id="weatherChart"></canvas>
+            </div>
+        </main>
+        <footer>
+            &copy; Сорокун Соня, ФБИ-32, 2 курс, 2025
+        </footer>
+    </body>
+</html>
