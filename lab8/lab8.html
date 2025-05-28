@@ -2,21 +2,35 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Сорокун Соня Романовна. Лабораторная 7 </title>
+        <title>Сорокун Соня Романовна. Лабораторная 8 </title>
         <link rel="stylesheet" href="../main.css" >
         <link rel="shortcut icon" href="../favicon_io/favicon.ico" type="image/x-icon" >
         <link rel="icon" href="../favicon_io/favicon-16x16.png" >
         <link rel="icon" href="../favicon_io/favicon-32x32.png" >
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
         <header>
-            НГТУ, ФБ, Лабораторная 7
+            НГТУ, ФБ, Лабораторная 8
         </header>
         <main>
-            <li><a href=""></a></li>
+            <div id="app">
+                <h1 :title="messageRus">{{ message }}</h1>
+            </div>
         </main>
         <footer>
             &copy; Сорокун Cоня, ФБИ-32, 2 курс, 2025 
         </footer>
+
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        message: 'Hello!',
+                        messageRus: 'Привет!',
+                    }
+                },
+            }).mount('#app');
+        </script>
     </body>
 </html>
