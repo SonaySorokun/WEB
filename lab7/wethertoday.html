@@ -25,8 +25,9 @@
                 })
                 .then(function(data) {
                     
-                    const Temperature = data.temperature_2m;
-                    const Humidity = data.relative_humidity_2m;
+                    const Temperature = data.current.temperature_2m;
+                    const Humidity = data.current.relative_humidity_2m;
+
 
                     
                     document.querySelector('#temperature').textContent = Temperature;
